@@ -27,9 +27,10 @@
         android:background="@drawable/text_field_design"
         android:ems="10"
         android:digits="0123456789"
-        android:hint="  EIIN"
+        android:hint="Phone"
+        android:maxLength="11"
         android:inputType="phone"
-        android:text=""
+        android:paddingLeft="10dp"
         android:textSize="13sp"
         android:textColor="#946D6D"
         android:textColorHint="#CEA4A4" />
@@ -43,10 +44,11 @@
         android:layout_marginEnd="31dp"
         android:layout_marginBottom="70dp"
         android:background="@drawable/text_field_design"
-        android:hint="  Password"
+        android:hint="Password"
         android:inputType="textPassword"
-        android:text=""
+        android:paddingLeft="10dp"
         android:textSize="13sp"
+
         android:textColor="#946D6D"
         android:textColorHint="#CEA4A4" />
 

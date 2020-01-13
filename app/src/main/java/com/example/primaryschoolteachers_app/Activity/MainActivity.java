@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         total = prefs.getString("total_student","defaultValue");
+        //Toast.makeText(this, total, Toast.LENGTH_SHORT).show();
         if(total.equals("false"))
         {
 

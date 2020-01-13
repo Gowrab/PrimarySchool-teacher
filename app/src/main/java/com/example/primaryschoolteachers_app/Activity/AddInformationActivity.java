@@ -56,6 +56,7 @@ import java.util.Objects;
 import cz.msebera.android.httpclient.entity.StringEntity;
 import cz.msebera.android.httpclient.message.BasicHeader;
 import cz.msebera.android.httpclient.protocol.HTTP;
+import es.dmoral.toasty.Toasty;
 
 public class AddInformationActivity extends AppCompatActivity {
     Pinview pvBoys1, pvGirls1, pvBoys2, pvGirls2, pvBoys3, pvGirls3, pvBoys4, pvGirls4, pvBoys5, pvGirls5;
@@ -233,6 +234,49 @@ public class AddInformationActivity extends AppCompatActivity {
             }
 
             dataObj.put("schoolinfo", cartItemsArray);
+        } catch (JSONException e) {
+            e.printStackTrace();
+
+        }
+
+        String yourData = dataObj.toString();
+        Log.d("data",yourData);
+        StringEntity entity = null;
+        try {
+            entity = new StringEntity(yourData);
+            entity.setContentEncoding(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
+        } catch(Exception e) {
+//Exception
+        }
+
+        String url="http://demo.olivineltd.com/primary_attendance/api/school/total_student/store";
+
+        new AsyncHttpClient().post(null,url,entity,"application/json", new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
+                
+                Boolean deger = new Boolean(responseBody.toString());
+                Toast.makeText(AddInformationActivity.this, String.valueOf(deger), Toast.LENGTH_SHORT).show();
+                if(deger)
+                {
+                    Intent mainpage = new Intent(AddInformationActivity.this,MainActivity.class);
+                    startActivity(mainpage);
+                    finish();
+                }
+                else
+                {
+                    Toasty.warning(AddInformationActivity.this,"যান্ত্রিক গোলযোগ",Toasty.LENGTH_LONG).show();
+                    finish();
+                    startActivity(getIntent());
+                }
+                Log.d("tag", deger.toString());
+            }
+
+            @Override
+            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody, Throwable error) {
+
+            }
+        });
 
 
 
@@ -324,45 +368,7 @@ public class AddInformationActivity extends AppCompatActivity {
         };
         Vconnection.getnInstance(this).addRequestQue(stringRequest);*/
 
-        } catch (JSONException e) {
-            e.printStackTrace();
 
-        }
-
-        String yourData = dataObj.toString();
-        Log.d("data",yourData);
-        StringEntity entity = null;
-        try {
-            entity = new StringEntity(yourData);
-            entity.setContentEncoding(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
-        } catch(Exception e) {
-//Exception
-        }
-
-        String url="http://192.168.10.108:1000/api/school/total_student/store";
-
-        new AsyncHttpClient().post(null,url,entity,"application/json", new AsyncHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
-
-                //String object= new String(responseBody);
-                //Toast.makeText(AddInformationActivity.this,object,Toast.LENGTH_LONG).show();
-                try {
-                    String object= new String(responseBody);
-                    JSONObject jsonObject = new JSONObject(object);
-                    /*String result = jsonObject.getString("success");
-                    //String message= jsonObject.getString("message");*/
-                    Log.d("tag", jsonObject.toString());
-                } catch (JSONException e) {
-                    //Toast.makeText(AddInformationActivity.this, String.valueOf(e), Toast.LENGTH_LONG).show();
-                }
-            }
-
-            @Override
-            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody, Throwable error) {
-
-            }
-        });
     }
 
 

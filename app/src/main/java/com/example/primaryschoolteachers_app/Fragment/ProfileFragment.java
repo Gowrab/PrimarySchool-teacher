@@ -38,10 +38,7 @@ public class ProfileFragment extends Fragment {
         eiinno = prefs.getString("school_eiin_no","defaultValue");
         phoneno = prefs.getString("school_teacher_mobile","defaultValue");
         totalstudent = prefs.getString("total_student","defaultvalue");
-        if(totalstudent.equals("true"))
-        {
-            addinfo.setVisibility(View.GONE);
-        }
+
         tvprofileName = rootView.findViewById(R.id.profileNameId);
         tvprofileName.setText(headMasterName);
         tvschoolname = rootView.findViewById(R.id.tvSchoolName);
@@ -56,6 +53,10 @@ public class ProfileFragment extends Fragment {
         /*SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getContext());
         schoolid = prefs.getString("u_id", "Empty");*/
         addinfo = rootView.findViewById(R.id.addinfo);
+        if(totalstudent.equals("true"))
+        {
+            addinfo.setVisibility(View.GONE);
+        }
         addinfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -143,14 +143,16 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void checkTotalStudent() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://192.168.10.108:1000/api/school/total_student/"+school_id,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://demo.olivineltd.com/primary_attendance/api/school/total_student/"+school_id,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         //hiding the progressbar after completion
+                        //Boolean totalstudent = new Boolean(response.toString());
 
                             //SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                             prefs.edit().putString("total_student",response) .apply();
+
                         Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                         /* intent.putExtra("total","ten");*/
                         startActivity(intent);

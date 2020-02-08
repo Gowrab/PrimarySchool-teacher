@@ -34,8 +34,12 @@
           <option name="url" value="https://gowrab@bitbucket.org/Samawat/primary_teacher_app.git" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/Gowrab/SalesApp.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
-    <option name="cloneParentDir" value="$USER_HOME$/Documents/Android/Olivine" />
+    <option name="cloneParentDir" value="$USER_HOME$/Documents/Class" />
   </component>
 </application>

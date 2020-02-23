@@ -40,6 +40,6 @@
         </UrlAndUserName>
       </list>
     </option>
-    <option name="cloneParentDir" value="$USER_HOME$/Documents/Class" />
+    <option name="cloneParentDir" value="$USER_HOME$/Documents/Android/Olivine" />
   </component>
 </application>
